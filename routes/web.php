@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::resource('crud/{id}/show', 'PostController@show');
+Route::get('crud/{$id}/editt', 'PostController@editt');
+Route::resource('crud', 'PostController');
