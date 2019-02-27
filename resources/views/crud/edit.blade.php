@@ -21,6 +21,10 @@
         <textarea name="body" rows="8" cols="80" >{{$crud->body}}</textarea>
       </div>
     </div>
+    <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="name" name="name" value="{{$crud->name}}" required>
+      </div>
     <div class="form-group">
     <input type="radio" name="result" value="Ali" >ALI
     

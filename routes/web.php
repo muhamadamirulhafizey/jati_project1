@@ -18,3 +18,4 @@ Route::get('/', function () {
 //Route::resource('crud/{id}/show', 'PostController@show');
 Route::get('crud/{$id}/editt', 'PostController@editt');
 Route::resource('crud', 'PostController');
+Route::resource('crud/result', 'ResultController');

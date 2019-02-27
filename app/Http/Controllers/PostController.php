@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use DB;
 use App\Crud;
+use App\Result;
 
 class PostController extends Controller
 {
@@ -43,7 +46,14 @@ class PostController extends Controller
             'body' => $request->get('body'),
             'result' => $request->get('result')
           ]);
-  
+
+          $result = new result([
+            
+            'name' => $request->get('name'),
+            'result' => $request->get('result')
+          ]);
+
+          $result->save();
           $crud->save();
           return redirect('/crud');
     }
@@ -56,8 +66,35 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $crud = Crud::find($id);
-        return view('crud.show', compact('crud','id'));
+        //$crud = Crud::find($id);
+       $crud = DB::table('cruds')->select('results.name','id','title','body')->join('results','results.result','=','cruds.result')->where('cruds.id',$id)->get();
+        
+       // $crud = DB::table('cruds')->select('SELECT results.name,id,title,body
+       // FROM crud
+        //INNER JOIN result
+       // ON crud.result = result.result;')->first();
+        
+        
+        //$crud = (array)$crudss;
+        // $crud = $crud::toArray();
+       
+        // $crud->tags()->all()->toArray();
+       // $crud = DB::table('cruds')
+       //->leftJoin('cruds.title', 'cruds.result', '=', 'results.result')
+       //->get();
+
+       //$crud = SELECT * FROM cruds WHERE id = ($id) ;
+      // $crud = SELECT * FROM addresses, linked_addresses WHERE addresses.address = linked_addresses.address WHERE code != 5;
+       
+      //$crud = DB::table('cruds')
+               // ->select('cruds.title','cruds.body','cruds.result','results.name')
+               // ->join('cruds', 'cruds.result', '=', 'results.result')->where('cruds.id',$id)
+               // ->join('users', 'users.id', '=', 'articles.user_id')
+                // ->get();
+
+                
+      
+      return view('crud.show', compact('crud','id'));
     }
 
     /**
@@ -68,7 +105,14 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $crud = Crud::find($id);
+        //$crud = Crud::find($id);
+        //$crud = DB::table('cruds')
+       // ->join('cruds.result', '=', 'results.result')
+       // ->select('results.result', 'name.result', 'body','title')
+        //->get();
+
+        $crud = DB::table('cruds')->select('results.name','results.result','id','title','body')->join('results','results.result','=','cruds.result')->where('cruds.id',$id)->first();
+      
         return view('crud.edit', compact('crud','id'));
     }
 
