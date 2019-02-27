@@ -21,6 +21,11 @@
         <textarea name="body" rows="8" cols="80" >{{$crud->body}}</textarea>
       </div>
     </div>
+    <div class="form-group">
+    <input type="radio" name="result" value="Ali" >ALI
+    
+    <input type="radio" name="result" value="Abu">ABU
+    </div>
     <div class="form-group row">
       <div class="col-md-2"></div>
       <button type="submit" class="btn btn-primary">Update</button>

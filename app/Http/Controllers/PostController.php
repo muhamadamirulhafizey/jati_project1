@@ -40,7 +40,8 @@ class PostController extends Controller
     {
         $crud = new Crud([
             'title' => $request->get('title'),
-            'body' => $request->get('body')
+            'body' => $request->get('body'),
+            'result' => $request->get('result')
           ]);
   
           $crud->save();
@@ -89,6 +90,7 @@ class PostController extends Controller
         $crud = Crud::find($id);
         $crud->title = $request->get('title');
         $crud->body = $request->get('body');
+        $crud->body = $request->get('result');
         $crud->save();
         return redirect('/crud');
     }

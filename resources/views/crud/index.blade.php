@@ -17,6 +17,7 @@
        <!-- <th>ID</th> -->
         <th>Title</th>
         <th>Post</th>
+        <th>Result</th>
         <th colspan="2">Action</th>
       </tr>
     </thead>
@@ -26,6 +27,7 @@
        <!--  <td>{{$post['id']}}</td> -->
         <td><a href="{{action('PostController@show', $post['id'])}}">{{$post['title']}}</a></td>
         <td>{{$post['body']}}</td>
+        <td>{{$post['result']}}</td>
         <td><a href="{{action('PostController@edit', $post['id'])}}" class="btn btn-warning">Edit</a></td>
         <td>
           <form action="{{action('PostController@destroy', $post['id'])}}" method="post">

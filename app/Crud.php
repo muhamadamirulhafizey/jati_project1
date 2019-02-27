@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Crud extends Model
 {
-    protected $fillable = ['title','body'];
+    protected $fillable = ['title','body','result'];
 }
